@@ -1,39 +1,43 @@
-# 🚀 Biblioteca TypeScript com conexão MongoDB
+# 🚀 Biblioteca em TypeScript
 
-Este projeto tem como objetivo aprofundar os conceitos de **MongoDB**, aplicando-os em uma estrutura de projeto robusta e escalável, com foco na criação de um **sistema de biblioteca**. 
+**Sistema de gerenciamento de livros para uma biblioteca,** com foco em uma arquitetura limpa e segura, incluindo funcionalidades de autenticação e autorização para acesso a recursos.
 
 ## Funcionalidades
+
 A API oferece os seguintes endpoints para interação com a biblioteca:
 
-GET /books: Lista todas os livros.
+### Gerenciamento de Livros (Requere Autenticação para Escrita)
 
-POST /books: Cria um novo livro.
+* **`GET /api/books`**
+* **`GET /api/books/:id`**
+* **`POST /api/books`**: **Esta rota requer autenticação.**
+* **`PATCH /api/book/:id`**: **Esta rota requer autenticação.**
+* **`DELETE /api/book/:id`**: **Esta rota requer autenticação.**
 
-UPDATE /book:id Edita uma parte do livro
+### Autenticação e Usuários (Administradores)
 
-Delete /book:id Apaga um livro cadastrado
+* **`POST /api/register`**
+* **`POST /api/login`**
+* **`GET /api/users`**: **Esta rota requer autenticação.**
+* **`GET /api/users/:id`**: **Esta rota requer autenticação.**
 
-🛠️ Conteúdo e Tecnologias
+## 🛠️ Conteúdo e Tecnologias
 
-O projeto foi estruturado com base nos seguintes conceitos e ferramentas:
+O projeto foi estruturado com base nos seguintes conceitos e ferramentas, visando escalabilidade, manutenibilidade e segurança:
 
-* MongoDB
+* **MongoDB**
+* **Clean Architecture**
+* **TypeScript**
+* **Express.js**
+* **JWT (JSON Web Tokens)**
+* **Bcrypt**
+* **Uuid**
+* **Cors**
+* **Testes com Thunder Client/Postman**
 
-* Clean Architecture
+---
 
-* TypeScript
-
-* Express.js: Framework web para Node.js, utilizado para configurar o servidor e as rotas.
-
-* Uuid: Usado para gerar ids aleatórios nos livros cadastrados.
-
-* Cors
-
-* Testes com Thunder Client/Postman: As funcionalidades da API foram testadas utilizando clientes HTTP como Thunder Client ou Postman.
-
------
-
-## Acessando: 
+## Acessando:
 
 Siga estas instruções para ter uma cópia do projeto funcionando na sua máquina local para desenvolvimento e testes.
 
@@ -41,21 +45,22 @@ Siga estas instruções para ter uma cópia do projeto funcionando na sua máqui
 
 Certifique-se de ter as seguintes ferramentas instaladas:
 
-  * **Node.js** (versão LTS recomendada)
-  * **npm** ou **Yarn** (gerenciador de pacotes)
-  * **TypeScript** (geralmente instalado junto com o Node.js ou via npm)
+* **Node.js** (versão LTS recomendada)
+* **npm** ou **Yarn** (gerenciador de pacotes)
+* **TypeScript** (geralmente instalado junto com o Node.js ou via npm)
+* **MongoDB Instance**: Uma instância do MongoDB (local ou na nuvem, como MongoDB Atlas) configurada e acessível. Você precisará de uma URI de conexão.
 
 ### Instalação
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/feliixjuliana/Projeto2-Clean-Architecture-Aprofunda.git
+    git clone https://github.com/feliixjuliana/Projeto5-Clean-JWT-Aprofunda.git
     ```
 2.  **Navegue até o diretório do projeto:**
     ```bash
     cd Projeto2-Clean-Architecture-Aprofunda
     ```
-3.  **Navegue até o projeto:**
+3.  **Navegue até o projeto da API:**
     ```bash
     cd api-clean-architecture
     ```
@@ -63,20 +68,73 @@ Certifique-se de ter as seguintes ferramentas instaladas:
     ```bash
     npm install
     ```
-5.  **Execute o projeto:**
+5.  **Configure as variáveis de ambiente:**
+    Crie um arquivo `.env` na raiz do diretório `api-clean-architecture` e adicione a URI de conexão do seu MongoDB e uma chave secreta para o JWT:
+
+    ```
+    MONGO_URI=
+    ```
+
+6.  **Execute o projeto:**
     ```bash
     npm run start
     ```
     O servidor deverá iniciar, geralmente em `http://localhost:3000`.
 
------
+---
 
 ## 📸 Demonstração
 
-### Enviando para o banco
+### Enviando para o banco (Exemplo de Criação de Livro)
 
-  * **Endpoint:** `http://localhost:3000/books`
-  * 
+* **Endpoint:** `POST http://localhost:3000/api/books`
+* **Headers:**
+    * `Content-Type: application/json`
+    * `Authorization: Bearer SEU_TOKEN_JWT_AQUI` (Obtenha este token após fazer login em `/api/login`)
+* **Body (JSON):**
+    ```json
+    {
+        "title": "O Senhor dos Anéis",
+        "bookGenres": "Fantasia",
+        "status": "Disponível",
+        "exemplaryQuantity": 5,
+        "author": "J.R.R. Tolkien"
+    }
+    ```
 
+### Registro de Usuário (Administrador)
 
+* **Endpoint:** `POST http://localhost:3000/api/register`
+* **Headers:**
+    * `Content-Type: application/json`
+* **Body (JSON):**
+    ```json
+    {
+        "username": "admin_user",
+        "password": "senha_segura_123"
+    }
+    ```
 
+### Login de Usuário (Administrador) e Obtenção do Token JWT
+
+* **Endpoint:** `POST http://localhost:3000/api/login`
+* **Headers:**
+    * `Content-Type: application/json`
+* **Body (JSON):**
+    ```json
+    {
+        "username": "admin_user",
+        "password": "senha_segura_123"
+    }
+    ```
+* **Resposta esperada (incluindo o token):**
+    ```json
+    {
+        "message": "User admin_user logged in successfully!",
+        "userId": "algum-id-do-usuario",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhbGgum-id-do-usuario... (Seu Token JWT completo aqui)"
+    }
+    ```
+    *Use o `token` retornado nas requisições para rotas protegidas, como na imagem abaixo.*
+  
+  *<img width="500" height="500" alt="Captura de tela 2025-07-28 163915" src="https://github.com/user-attachments/assets/b1bdcbe5-055e-4f9b-a057-20c5d1039398" />
