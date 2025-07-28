@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { UserService } from '../services/user-service';
+import { gerarToken } from '../shared/helpews/jwt'
 
 export const createUserControllerHandlers = (userServiceInstance: UserService) => {
 
@@ -25,7 +26,9 @@ export const createUserControllerHandlers = (userServiceInstance: UserService) =
                 res.status(401).json({ message: 'Invalid credentials' });
                 return;
             }
-            res.status(200).json({ message: `User ${user.username} logged in successfully!`, userId: user.id });
+            const token = gerarToken({ userId: user.id, username: user.username});
+
+            res.status(200).json({ message: `User ${user.username} logged in successfully! Seu Token: `, userId: user.id, token: token });
         } catch (error: any) {
             res.status(500).json({ message: 'Error during login', error: error.message });
         }

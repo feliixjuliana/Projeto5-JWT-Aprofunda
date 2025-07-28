@@ -15,7 +15,7 @@ export function autenticar(req: Request, res: Response, next: NextFunction) {
   const token = authHeader.split(" ")[1];
   try {
     const payload = jwt.verify(token, JWT_SECRET);
-    req.adm = payload;
+    req.user = payload;
     next();
   } catch (e) {
     res.status(401).json({ error: "token inválido" });
