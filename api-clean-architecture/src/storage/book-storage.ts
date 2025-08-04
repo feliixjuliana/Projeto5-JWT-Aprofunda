@@ -1,12 +1,4 @@
-export interface Book {
-    id: string;
-    title: string;
-    bookGenres: string;
-    status: string;
-    exemplaryQuantity: number;
-    author: string;
-    created_at: string;
-}
+import { Book } from "../models/book-model"; 
 
 class BookStorage {
     private static instance: BookStorage;
@@ -22,21 +14,31 @@ class BookStorage {
         return BookStorage.instance;
     }
 
-    public add(book: Book): void {
-        this.books.push(book)
+    public async save(book: Book): Promise<Book> {
+        this.books.push(book);
+        return book; 
     }
 
-    public getAll(): Book[] {
-        return this.books
+    public async getAll(): Promise<Book[]> {
+        return this.books;
     }
 
-    public getById(id: string): Book | undefined {
-        return this.books.find((book) => book.id === id);
+    public async findById(id: string): Promise<Book | null> {
+        const foundBook = this.books.find((book) => book.id === id);
+        return foundBook || null;
     }
 
-    public deleteBook(id: string): Book[] {
+    public async update(book: Book): Promise<Book | null> {
+        const index = this.books.findIndex(b => b.id === book.id);
+        if (index > -1) {
+            this.books[index] = book;
+            return this.books[index];
+        }
+        return null;
+    }
+    
+    public async delete(id: string): Promise<void> {
         this.books = this.books.filter((book) => book.id !== id);
-        return this.books
     }
 }
 

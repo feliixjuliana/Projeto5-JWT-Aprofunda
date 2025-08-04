@@ -17,12 +17,4 @@ router.get('/books/:id', bookController.getBookById);
 router.patch('/book/:id', autenticar, bookController.updatePost);
 router.delete('/book/:id', autenticar, bookController.deletePost);
 
-const URI = process.env.MONGO_URI;
-
-if(!URI){
-    throw new Error(' a variavel não está definida')
-}
-
-connectToMongo(URI)
-
 export default router; 

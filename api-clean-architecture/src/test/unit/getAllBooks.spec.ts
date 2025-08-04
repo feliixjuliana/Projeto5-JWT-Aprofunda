@@ -1,13 +1,16 @@
-import bibliotecaServices from '../../services/book-service';
+import {BookService} from '../../services/book-service';
 import BookStorage from '../../storage/book-storage';
 
 describe('Get bibliotecaService', () => {
+    let bookService: BookService;
+
     beforeEach(() => {
         BookStorage.books = []
+        bookService = new BookService(BookStorage);
     });
 
-    it('Listar todos os livros', () => {
-        bibliotecaServices.createBook({
+    it('Listar todos os livros', async () => {
+        await bookService.createBook({
              title: 'Capitães da Areia',
              bookGenres: 'Aventura',
              status: 'Disponível',
@@ -17,7 +20,7 @@ describe('Get bibliotecaService', () => {
 
         expect(BookStorage.books.length).toBe(1);
 
-        const listBookCreated = bibliotecaServices.getAllBooks();
+        const listBookCreated = await bookService.getAllBooks();
 
         expect(listBookCreated[0].title).toBe('Capitães da Areia');
     })

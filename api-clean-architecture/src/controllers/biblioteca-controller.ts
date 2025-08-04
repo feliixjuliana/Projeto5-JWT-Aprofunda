@@ -7,7 +7,7 @@ export const createBookControllerHandlers = (bookServiceInstance: BookService) =
         const { title, bookGenres, status, exemplaryQuantity, author } = req.body;
         const newBook = await bookServiceInstance.createBook({ title, bookGenres, status, exemplaryQuantity, author });
 
-        res.status(201).json({ message: `New book, ${newBook.title}, created!!`, id: newBook.id })
+        res.status(201).json(newBook)
     };
 
     const listPosts = async (req: Request, res: Response): Promise<void> => {
@@ -20,11 +20,11 @@ export const createBookControllerHandlers = (bookServiceInstance: BookService) =
         const updatedBook = await bookServiceInstance.updateBook(id, req.body);
 
         if (!updatedBook) {
-            res.status(404).json({ message: `Book com ${id} não encontrado` });
+            res.status(404).json({ message: `Book com ${id} não encontrado. ` });
             return;
         }
 
-        res.status(200).json({ message: `Book com id:${id} editado com sucesso!!` });
+        res.status(200).json(updatedBook);
     };
 
     const deletePost = async (req: Request, res: Response): Promise<void> => {

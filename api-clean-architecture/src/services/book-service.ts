@@ -52,3 +52,5 @@ export class BookService {
         await this.bookRepository.delete(id);
     }
 }
+
+export default BookService;
