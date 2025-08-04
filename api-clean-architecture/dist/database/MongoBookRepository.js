@@ -55,3 +55,4 @@ class MongoBookRepository {
     }
 }
 exports.MongoBookRepository = MongoBookRepository;
+//# sourceMappingURL=MongoBookRepository.js.map

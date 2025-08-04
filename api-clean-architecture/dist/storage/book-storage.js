@@ -34,3 +34,4 @@ class BookStorage {
     }
 }
 exports.default = BookStorage.getInstance();
+//# sourceMappingURL=book-storage.js.map

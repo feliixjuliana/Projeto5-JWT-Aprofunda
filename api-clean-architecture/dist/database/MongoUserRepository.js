@@ -42,3 +42,4 @@ class MongoUserRepository {
     }
 }
 exports.MongoUserRepository = MongoUserRepository;
+//# sourceMappingURL=MongoUserRepository.js.map

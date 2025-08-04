@@ -43,3 +43,4 @@ const createBookControllerHandlers = (bookServiceInstance) => {
     };
 };
 exports.createBookControllerHandlers = createBookControllerHandlers;
+//# sourceMappingURL=biblioteca-controller.js.map

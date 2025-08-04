@@ -17,3 +17,4 @@ router.post('/login', userController.loginUser);
 router.get('/admin', userController.listUsers);
 router.get('/admin/:id', authMiddlewares_1.autenticar, userController.getUserById);
 exports.default = router;
+//# sourceMappingURL=user-routes.js.map

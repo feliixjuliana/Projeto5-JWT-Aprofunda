@@ -24,3 +24,4 @@ describe('DELETE bibliotecaServices', () => {
         expect(book_storage_1.default.books.length).toBe(0);
     });
 });
+//# sourceMappingURL=deleteBookById.spec.js.map

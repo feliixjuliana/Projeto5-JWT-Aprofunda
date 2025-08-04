@@ -54,3 +54,4 @@ const createUserControllerHandlers = (userServiceInstance) => {
     };
 };
 exports.createUserControllerHandlers = createUserControllerHandlers;
+//# sourceMappingURL=user-controller.js.map

@@ -14,3 +14,4 @@ class Book {
     }
 }
 exports.Book = Book;
+//# sourceMappingURL=book-model.js.map

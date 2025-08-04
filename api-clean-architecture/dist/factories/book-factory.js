@@ -15,3 +15,4 @@ exports.default = {
         });
     },
 };
+//# sourceMappingURL=book-factory.js.map

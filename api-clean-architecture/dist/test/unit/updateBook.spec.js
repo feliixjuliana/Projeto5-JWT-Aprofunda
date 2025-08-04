@@ -24,3 +24,4 @@ describe('PATCH bibliotecaService', () => {
         expect(update?.title).toBe('Capitães da Areia');
     });
 });
+//# sourceMappingURL=updateBook.spec.js.map

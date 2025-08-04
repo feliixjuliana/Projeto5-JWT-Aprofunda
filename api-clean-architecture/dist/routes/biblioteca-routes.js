@@ -18,3 +18,4 @@ router.get('/books/:id', bookController.getBookById);
 router.patch('/book/:id', authMiddlewares_1.autenticar, bookController.updatePost);
 router.delete('/book/:id', authMiddlewares_1.autenticar, bookController.deletePost);
 exports.default = router;
+//# sourceMappingURL=biblioteca-routes.js.map

@@ -44,3 +44,4 @@ class BookService {
 }
 exports.BookService = BookService;
 exports.default = BookService;
+//# sourceMappingURL=book-service.js.map

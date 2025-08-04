@@ -68,3 +68,4 @@ describe('DELETE /book/:id', () => {
         expect(response.status).toBe(204);
     });
 });
+//# sourceMappingURL=deleteBookIntegration.spec.js.map

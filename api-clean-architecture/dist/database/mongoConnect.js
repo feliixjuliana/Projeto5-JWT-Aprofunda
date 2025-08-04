@@ -9,7 +9,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 async function connectToMongo(uri) {
     try {
-        await mongoose_1.default.connect(process.env.MONGO_URI);
+        await mongoose_1.default.connect(process.env.MONGO_URL);
         console.log('Conectado ao MongoDB Atlas com sucesso');
     }
     catch (error) {
@@ -17,3 +17,4 @@ async function connectToMongo(uri) {
         process.exit(1);
     }
 }
+//# sourceMappingURL=mongoConnect.js.map

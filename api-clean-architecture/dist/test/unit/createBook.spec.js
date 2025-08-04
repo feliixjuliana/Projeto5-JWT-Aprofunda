@@ -24,3 +24,4 @@ describe('POST bibliotecaServices', () => {
         expect(book.author).toBe('Jorge Amado');
     });
 });
+//# sourceMappingURL=createBook.spec.js.map

@@ -60,3 +60,4 @@ describe("POST /books - Criação de Livro com Autenticação", () => {
         expect(response.status).toBe(401);
     });
 });
+//# sourceMappingURL=createBookIntegration.spec.js.map

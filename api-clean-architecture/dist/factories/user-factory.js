@@ -12,3 +12,4 @@ exports.default = {
         });
     }
 };
+//# sourceMappingURL=user-factory.js.map

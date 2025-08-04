@@ -13,3 +13,4 @@ function gerarToken(payload) {
 function verificarToken(token) {
     return jsonwebtoken_1.default.verify(token, JWT_SECRET);
 }
+//# sourceMappingURL=jwt.js.map

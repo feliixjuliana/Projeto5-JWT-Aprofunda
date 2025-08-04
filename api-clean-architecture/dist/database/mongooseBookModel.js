@@ -47,3 +47,4 @@ const bookSchema = new mongoose_1.Schema({
     versionKey: false
 });
 exports.bookModel = mongoose_1.default.model('Book', bookSchema);
+//# sourceMappingURL=mongooseBookModel.js.map

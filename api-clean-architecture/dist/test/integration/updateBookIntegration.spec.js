@@ -73,3 +73,4 @@ describe('PATCH /book/:id', () => {
         expect(response.body.title).toBe(updateBook.title);
     });
 });
+//# sourceMappingURL=updateBookIntegration.spec.js.map

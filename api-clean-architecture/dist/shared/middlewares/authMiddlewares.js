@@ -23,3 +23,4 @@ function autenticar(req, res, next) {
         return;
     }
 }
+//# sourceMappingURL=authMiddlewares.js.map
