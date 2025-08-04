@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const MongoBookRepository_1 = require("../database/MongoBookRepository");
+const biblioteca_controller_1 = require("../controllers/biblioteca-controller");
+const book_service_1 = require("../services/book-service");
+const authMiddlewares_1 = require("../shared/middlewares/authMiddlewares");
+var router = express_1.default.Router();
+const bookRepository = new MongoBookRepository_1.MongoBookRepository();
+const bookService = new book_service_1.BookService(bookRepository);
+const bookController = (0, biblioteca_controller_1.createBookControllerHandlers)(bookService);
+router.post('/books', authMiddlewares_1.autenticar, bookController.createPost);
+router.get('/books', bookController.listPosts);
+router.get('/books/:id', bookController.getBookById);
+router.patch('/book/:id', authMiddlewares_1.autenticar, bookController.updatePost);
+router.delete('/book/:id', authMiddlewares_1.autenticar, bookController.deletePost);
+exports.default = router;

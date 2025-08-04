@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: blog-api
+    name: biblioteca-gerenciamento
     env: node
     plan: free
     buildCommand: npm install && npm run build

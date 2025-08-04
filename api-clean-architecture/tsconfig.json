@@ -3,12 +3,23 @@
     "module": "CommonJs",
     "target": "ES2020",
     "esModuleInterop": true,
-    "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "strict": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
   },
-  "include": ["src", "src/@types"],
-  "exclude": ["node_modules", "dist", "src/tests/**/8"]
+  "include": [
+    "src",
+    "src/@types"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/tests/**/*"
+  ]
 }

@@ -1,0 +1,51 @@
+name: deploy-to-render
+on: 
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+env:
+  NODE_VERSION: '18.x'
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    services: 
+      mongodb: 
+        image: mongo:5.0
+        ports: 
+          - 27017: 27017
+    steps: 
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        node-version: ${{ env.NODE_VERSION}}
+        cache: npm
+    - name: install dependecies
+      run: npm ci
+
+    - name: Build project
+      run: npm run build
+
+    - name: Run tests
+      run: npm test
+      env: 
+        MONGO_URL: mongogdb://localhost:27017/biblioteca_test
+        JWT_SECRET: jwt-secret-test
+        NODE_ENV: test
+
+  deploy:
+    name: deploy-to-render
+    needs: test
+    runs-on: ubuntu-latest
+
+    if: github.ref == 'refs/heads/main'
+    steps: 
+    - name: deploy-to-render
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        services-id: ${{secrets.RENDER_SERVICE_ID}}
+        api-key: ${{secrets.RENDER_SERVICE_API_KEY}}
+
+
