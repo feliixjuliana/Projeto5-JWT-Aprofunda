@@ -18,7 +18,7 @@ app.use(adminRoutes);
 if (process.env.NODE_ENV !== 'test') {
     const URL = config.mongo_url;
     if(!URL){
-        throw new Error(' a variavel não está definida')
+        throw new Error(' a variavel não está definida!')
     }
     connectToMongo(URL); 
 }
