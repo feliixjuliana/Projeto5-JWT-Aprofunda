@@ -10,3 +10,9 @@ services:
         value: production
       - key: PORT
         value: 10000
+      - key: MONGO_URI_TEST
+        fromDatabase:
+          name: mongodb-atlas
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
