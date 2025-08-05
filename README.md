@@ -5,6 +5,7 @@
 ## Funcionalidades
 
 A API oferece os seguintes endpoints para interação com a biblioteca:
+
 Caso deseje acessar as api pelo deploy, use: https://projeto5-jwt-aprofunda.onrender.com
 
 ### Autenticação e Usuários (Administradores)
