@@ -101,7 +101,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
     ```json
     {
         "username": "admin_user",
-        "password": "senha_segura_123"
+        "passwordText": "senha_segura_123"
     }
     ```
 
@@ -110,13 +110,14 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 * **Endpoint:**
 * Render: `POST https://projeto5-jwt-aprofunda.onrender.com/login`
 * Local:`POST http://localhost:3000/login`
-* **Headers:**
-    * `Content-Type: application/json`
+* **Exemplo:**
+    * <img width="1756" height="798" alt="Captura de tela 2025-08-04 183057" src="https://github.com/user-attachments/assets/633230ff-fa00-4125-ae48-612548591fe4" />
+
 * **Body (JSON):**
     ```json
     {
         "username": "admin_user",
-        "password": "senha_segura_123"
+        "passwordText": "senha_segura_123"
     }
     ```
 * **Resposta esperada (incluindo o token):**
@@ -129,13 +130,14 @@ Certifique-se de ter as seguintes ferramentas instaladas:
     ```
     *Use o `token` retornado nas requisições para rotas protegidas, como na imagem abaixo.*
 
-### Enviando para o banco (Exemplo de Criação de Livro)
+### Enviando para o banco (Exemplo de Criação de Livro, precisa do token)
 
 * **Endpoint:**
 * Render: `POST https://projeto5-jwt-aprofunda.onrender.com/books`
 * Local:`POST http://localhost:3000/books`
-* **Headers:**
-    * `Content-Type: application/json`
+* **Exemplo:**
+    * <img width="1756" height="786" alt="Captura de tela 2025-08-04 183039" src="https://github.com/user-attachments/assets/e9ef169d-48c0-4578-94cb-db9b73c7442f" />
+
     * `Authorization: Bearer SEU_TOKEN_JWT_AQUI` (Obtenha este token após fazer login em `/api/login`)
 * **Body (JSON):**
     ```json
