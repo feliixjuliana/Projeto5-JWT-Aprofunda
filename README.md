@@ -74,7 +74,10 @@ Certifique-se de ter as seguintes ferramentas instaladas:
     Crie um arquivo `.env` na raiz do diretório `api-clean-architecture` e adicione a URI de conexão do seu MongoDB e uma chave secreta para o JWT:
 
     ```
-    MONGO_URI=
+    MONGO_URL=
+    MONGO_URI_TEST=
+    PORT=
+    JWT_SECRET=
     ```
 
 6.  **Execute o projeto:**
