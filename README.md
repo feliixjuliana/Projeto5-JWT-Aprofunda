@@ -78,6 +78,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
     MONGO_URI_TEST=
     PORT=
     JWT_SECRET=
+    NODE_ENV =
     ```
 
 6.  **Execute o projeto:**
