@@ -1,10 +1,18 @@
 # 🚀 Biblioteca em TypeScript
 
-**Sistema de gerenciamento de livros para uma biblioteca,** com foco em uma arquitetura limpa e segura, incluindo funcionalidades de autenticação e autorização para acesso a recursos.
+**Sistema de gerenciamento de livros para uma biblioteca,** com foco em uma arquitetura limpa e segura, incluindo funcionalidades de autenticação e autorização para acesso a recursos. Assim como o deploy do render.
 
 ## Funcionalidades
 
 A API oferece os seguintes endpoints para interação com a biblioteca:
+Caso deseje acessar as api pelo deploy, use: https://projeto5-jwt-aprofunda.onrender.com
+
+### Autenticação e Usuários (Administradores)
+
+* **`POST /api/register`**
+* **`POST /api/login`**
+* **`GET /api/users`**: **Esta rota requer autenticação.**
+* **`GET /api/users/:id`**: **Esta rota requer autenticação.**
 
 ### Gerenciamento de Livros (Requere Autenticação para Escrita)
 
@@ -13,13 +21,6 @@ A API oferece os seguintes endpoints para interação com a biblioteca:
 * **`POST /api/books`**: **Esta rota requer autenticação.**
 * **`PATCH /api/book/:id`**: **Esta rota requer autenticação.**
 * **`DELETE /api/book/:id`**: **Esta rota requer autenticação.**
-
-### Autenticação e Usuários (Administradores)
-
-* **`POST /api/register`**
-* **`POST /api/login`**
-* **`GET /api/users`**: **Esta rota requer autenticação.**
-* **`GET /api/users/:id`**: **Esta rota requer autenticação.**
 
 ## 🛠️ Conteúdo e Tecnologias
 
@@ -85,26 +86,11 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 ## 📸 Demonstração
 
-### Enviando para o banco (Exemplo de Criação de Livro)
-
-* **Endpoint:** `POST http://localhost:3000/api/books`
-* **Headers:**
-    * `Content-Type: application/json`
-    * `Authorization: Bearer SEU_TOKEN_JWT_AQUI` (Obtenha este token após fazer login em `/api/login`)
-* **Body (JSON):**
-    ```json
-    {
-        "title": "O Senhor dos Anéis",
-        "bookGenres": "Fantasia",
-        "status": "Disponível",
-        "exemplaryQuantity": 5,
-        "author": "J.R.R. Tolkien"
-    }
-    ```
-
 ### Registro de Usuário (Administrador)
 
-* **Endpoint:** `POST http://localhost:3000/api/register`
+* **Endpoint:**
+* Render: `POST https://projeto5-jwt-aprofunda.onrender.com/register`
+* Local:`POST http://localhost:3000/register`
 * **Headers:**
     * `Content-Type: application/json`
 * **Body (JSON):**
@@ -117,7 +103,9 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 ### Login de Usuário (Administrador) e Obtenção do Token JWT
 
-* **Endpoint:** `POST http://localhost:3000/api/login`
+* **Endpoint:**
+* Render: `POST https://projeto5-jwt-aprofunda.onrender.com/login`
+* Local:`POST http://localhost:3000/login`
 * **Headers:**
     * `Content-Type: application/json`
 * **Body (JSON):**
@@ -136,5 +124,24 @@ Certifique-se de ter as seguintes ferramentas instaladas:
     }
     ```
     *Use o `token` retornado nas requisições para rotas protegidas, como na imagem abaixo.*
+
+### Enviando para o banco (Exemplo de Criação de Livro)
+
+* **Endpoint:**
+* Render: `POST https://projeto5-jwt-aprofunda.onrender.com/books`
+* Local:`POST http://localhost:3000/books`
+* **Headers:**
+    * `Content-Type: application/json`
+    * `Authorization: Bearer SEU_TOKEN_JWT_AQUI` (Obtenha este token após fazer login em `/api/login`)
+* **Body (JSON):**
+    ```json
+    {
+        "title": "O Senhor dos Anéis",
+        "bookGenres": "Fantasia",
+        "status": "Disponível",
+        "exemplaryQuantity": 5,
+        "author": "J.R.R. Tolkien"
+    }
+    ```
   
   *<img width="500" height="500" alt="Captura de tela 2025-07-28 163915" src="https://github.com/user-attachments/assets/b1bdcbe5-055e-4f9b-a057-20c5d1039398" />
